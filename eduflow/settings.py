@@ -169,7 +169,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 # }
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+
 
 
 from decouple import config
@@ -183,3 +185,12 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+
+from decouple import config, Csv
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
