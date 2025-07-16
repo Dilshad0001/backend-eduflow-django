@@ -331,6 +331,7 @@ class StudentSubmissionView(APIView):
         if not_completed:
             submissions = submissions.filter(is_completed=False)
 
+
         ser = AssignmentSubmissionSerializer(submissions, many=True)
         return Response(ser.data, status=status.HTTP_200_OK)
 
