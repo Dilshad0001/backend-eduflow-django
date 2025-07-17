@@ -193,5 +193,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 from decouple import config, Csv
 
 # ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+import os
 
-ALLOWED_HOSTS=['*']
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+
+# ALLOWED_HOSTS=['*']
