@@ -32,3 +32,10 @@ class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model=Lesson
         fields=['id','subject','lesson_name','video']
+
+
+from .models import Home
+class HomeSerialiser(serializers.ModelSerializer):
+    class Meta:
+        model=Home
+        fields=['id','message']    

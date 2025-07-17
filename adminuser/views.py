@@ -550,3 +550,25 @@ class AdminLeaderBoardView(APIView):
         leaderboard = Leaderboard.objects.all()
         ser = LeaderBoardSerializer(leaderboard, many=True)
         return Response(ser.data, status=status.HTTP_200_OK)
+
+
+from .models import Home
+from .serializers import HomeSerialiser
+
+# class HomeView(APIView):
+#     def get(self, request):
+#         try:
+#             home = Home.objects.get(id=1)
+#             serializer = HomeSerialiser(home)
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+#         except Home.DoesNotExist:
+#             return Response({'error': 'Home not found'}, status=status.HTTP_404_NOT_FOUND)
+
+class HomeView(APIView):
+    def get(self, request):  # ✅ Fixed typo
+        try:
+            home = Home.objects.all()
+            serializer = HomeSerialiser(home,many=True)  # ✅ Removed many=True
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Home.DoesNotExist:
+            return Response({'error': 'Home not found'}, status=status.HTTP_404_NOT_FOUND)

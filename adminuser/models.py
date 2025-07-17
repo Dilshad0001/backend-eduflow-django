@@ -22,3 +22,8 @@ class Lesson(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)  
     lesson_name = models.CharField(max_length=30)
     video = models.FileField(upload_to='videos/', null=True, blank=True) 
+
+
+
+class Home(models.Model):
+    message=models.CharField(max_length=100)

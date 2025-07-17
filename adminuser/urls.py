@@ -13,6 +13,6 @@ urlpatterns = [
     path('submission/',views.AdminSubmissionView.as_view()),
     path('dashboard/',views.adminDashboardView.as_view()),
     path('leaderboard/',views.AdminLeaderBoardView.as_view()),
-
+    path('', views.HomeView.as_view(), name='home'),
 
 ]
