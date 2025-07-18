@@ -519,7 +519,10 @@ class AdminSubmissionView(APIView):
 
         ser = AssignmentSubmissionSerializer(inst, request.data, partial=True)
         if ser.is_valid():
-            ser.save()
+            updated_submission =ser.save()
+            student = updated_submission.student
+            mark = updated_submission.mark
+            Leaderboard.objects.create(student_name=student,mark=mark)
             return Response(ser.data, status=status.HTTP_200_OK)
         return Response(ser.errors, status=status.HTTP_400_BAD_REQUEST)
 
